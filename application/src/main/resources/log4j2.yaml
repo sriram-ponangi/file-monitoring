@@ -3,8 +3,11 @@ Configutation:
 
   Properties:
     Property:
-      name: log-path
-      value: "logs"
+      - name: log-path
+        value: ${sys:file.monitoring.app.logs.path:-logs}
+      - name: log-level
+        value: ${sys:file.monitoring.app.logs.level:-debug}
+
 
   Appenders:
 
@@ -12,17 +15,17 @@ Configutation:
       - name: Console_Appender
         target: SYSTEM_OUT
         PatternLayout:
-          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level]  [%t] %c{1} - %msg%n"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5level] %logger{36} - %msg%n"
 
     RollingFile:
       - name: RollingFile_Appender
         fileName: ${log-path}/file_monitor_app.log
-        filePattern: "${log-path}/archive/file_monitor_app.log.%d{yyyy-MM-dd-hh-mm}.zip"
+        filePattern: ${log-path}/archive/file_monitor_app.log.%d{yyyy-MM-dd-hh-mm}.zip
         PatternLayout:
           pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
         Policies:
           SizeBasedTriggeringPolicy:
-            size: 1 KB
+            size: 1 MB
         DefaultRollOverStrategy:
           max: 30
 
@@ -30,19 +33,27 @@ Configutation:
   Loggers:
 
     Root:
-      level: debug
+      level: info
       AppenderRef:
         - ref: Console_Appender
+        - ref: RollingFile_Appender
+
 
     Logger:
-      - name: com.file.monitoring
-        level: debug
-        AppenderRef:
-          - ref: File_Appender
-            level: info
-          - ref: RollingFile_Appender
-            level: debug
 
+      - name: com.file.monitoring
+        additivity: false
+        level: ${log-level}
+        AppenderRef:
+          - ref: Console_Appender
+          - ref: RollingFile_Appender
+
+#      - name: org.springframework
+#        additivity: false
+#        level: info
+#        AppenderRef:
+#          - ref: Console_Appender
+#          - ref: RollingFile_Appender
 
 
 

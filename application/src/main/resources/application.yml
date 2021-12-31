@@ -6,17 +6,8 @@ chain:
     yml:
       path: chain/chain-config.yml
 
-logging:
-  file:
-    name: ${application.name}.log
-    max-size: 1MB
-    path: logs
-  pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
-    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
-  level:
-    root: INFO
-    com:
-      springframework: INFO
-      file:
-        monitoring: DEBUG
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_1
+    username: TEMP_DB_1_ADMIN
+    password: TEMP_DB_1_ADMIN

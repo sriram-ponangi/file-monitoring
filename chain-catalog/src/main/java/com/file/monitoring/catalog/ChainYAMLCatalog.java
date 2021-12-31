@@ -29,14 +29,12 @@ public class ChainYAMLCatalog {
 
     @Bean("ChainYMLCatalog")
     private Catalog parseConfigFile() {
-        System.out.println(chainConfigXMLPath);
         Yaml yaml = new Yaml(new Constructor(CatalogBean.class));
         InputStream inputStream = this.getClass()
                 .getClassLoader()
                 .getResourceAsStream(chainConfigXMLPath);
         CatalogBean catalogBean = yaml.load(inputStream);
 
-        System.out.println(catalogBean);
 
         CatalogBase catalogBase = new CatalogBase();
 
