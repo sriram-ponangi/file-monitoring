@@ -1,0 +1,32 @@
+catalog:
+  - chain: AscendingChain
+    commands:
+    - GenericCommand1
+    - GenericCommand2
+    - GenericCommand3
+    - GenericCommand4
+    - GenericCommand5
+
+  - chain: DescendingChain
+    commands:
+    - GenericCommand5
+    - GenericCommand4
+    - GenericCommand3
+    - GenericCommand2
+    - GenericCommand1
+    -
+  - chain: VerificationChain
+    commands:
+    - BasicVerificationCommand
+    - GenericCommand1
+    - BasicVerificationCommand
+    - GenericCommand2
+    - BasicVerificationCommand
+    - GenericCommand3
+    - BasicVerificationCommand
+    - GenericCommand4
+    - BasicVerificationCommand
+    - GenericCommand5
+
+
+

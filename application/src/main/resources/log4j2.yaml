@@ -1,0 +1,95 @@
+Configutation:
+  name: Default
+
+  Properties:
+    Property:
+      name: log-path
+      value: "logs"
+
+  Appenders:
+
+    Console:
+      - name: Console_Appender
+        target: SYSTEM_OUT
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level]  [%t] %c{1} - %msg%n"
+
+    RollingFile:
+      - name: RollingFile_Appender
+        fileName: ${log-path}/file_monitor_app.log
+        filePattern: "${log-path}/archive/file_monitor_app.log.%d{yyyy-MM-dd-hh-mm}.zip"
+        PatternLayout:
+          pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 1 KB
+        DefaultRollOverStrategy:
+          max: 30
+
+
+  Loggers:
+
+    Root:
+      level: debug
+      AppenderRef:
+        - ref: Console_Appender
+
+    Logger:
+      - name: com.file.monitoring
+        level: debug
+        AppenderRef:
+          - ref: File_Appender
+            level: info
+          - ref: RollingFile_Appender
+            level: debug
+
+
+
+
+
+
+
+
+
+
+
+
+#property:
+#  logsPath: ${sys:file.monitoring.app.logs.path:-/file-monitor/logs}
+#  dateDir: $${date:yyyy-MM-dd}
+#
+#appender:
+#  console:
+#    type: Console
+#    name: STOUT
+#    layout:
+#      type: PatternLayout
+#      pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c %L - %msg%n'
+#
+#
+#  logToFile:
+#    type: RollingFile
+#    name: logToFile
+#    fileName: ${logsPath}/${dateDir}/app.log
+#    filePattern: ${logsPath}/${dateDir}/app-%d{yyyy-MM-dd}-%i.log
+#    layout:
+#      type: PatternLayout
+#      pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c %L - %msg%n'
+#    policies:
+#      type: Policies
+#      size:
+#        type: SizeBasedTriggeringPolicy
+#        size: 1MB
+#    strategy:
+#      type: DefaultRolloverStrategy
+#      max: 7
+#
+#
+#rootLogger:
+#  level: ${sys:file.monitoring.app.log.level:-DEBUG}
+#  appenderRef:
+#    console:
+#      ref: STDOUT
+#    rolling:
+#      ref: logToFile
+#

@@ -1,0 +1,22 @@
+application:
+  name: file-monitor
+
+chain:
+  config:
+    yml:
+      path: chain/chain-config.yml
+
+logging:
+  file:
+    name: ${application.name}.log
+    max-size: 1MB
+    path: logs
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+  level:
+    root: INFO
+    com:
+      springframework: INFO
+      file:
+        monitoring: DEBUG
