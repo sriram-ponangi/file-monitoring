@@ -3,12 +3,12 @@ package com.file.monitoring.generic.commands.dto;
 import lombok.Data;
 
 @Data
-public class Names {
+public class NamesDTO {
     private long id;
     private String fName;
     private String lName;
 
-    public Names(long id, String fName, String lName) {
+    public NamesDTO(long id, String fName, String lName) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;

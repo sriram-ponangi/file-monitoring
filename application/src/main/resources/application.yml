@@ -6,8 +6,15 @@ chain:
     yml:
       path: chain/chain-config.yml
 
-spring:
+temp-db1-admin:
   datasource:
-    url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_1
+    jdbc-url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_1
     username: TEMP_DB_1_ADMIN
     password: TEMP_DB_1_ADMIN
+
+
+temp-db2-admin:
+  datasource:
+    jdbc-url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_2
+    username: TEMP_DB_2_ADMIN
+    password: TEMP_DB_2_ADMIN

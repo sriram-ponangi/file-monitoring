@@ -18,12 +18,10 @@ public class GenericProcessor5_1 implements GenericProcessor {
 
     @Override
     public void process(Context context) throws Exception {
-        LOGGER.info("{} - CURRENT CHAIN CONTEXT :: {}",
-                this.getClass().getSimpleName(), context);
 
         context.put(this.getClass().getSimpleName(), namesDAO.findAll());
 
-        LOGGER.info("{} - UPDATING CHAIN CONTEXT :: {}",
+        LOGGER.info("{} - CURRENT CHAIN CONTEXT :: {}",
                 this.getClass().getSimpleName(), context);
 
     }

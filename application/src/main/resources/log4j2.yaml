@@ -1,5 +1,5 @@
 Configutation:
-  name: Default
+  name: File-Monitoring-App
 
   Properties:
     Property:
@@ -10,13 +10,11 @@ Configutation:
 
 
   Appenders:
-
     Console:
       - name: Console_Appender
         target: SYSTEM_OUT
         PatternLayout:
           pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5level] %logger{36} - %msg%n"
-
     RollingFile:
       - name: RollingFile_Appender
         fileName: ${log-path}/file_monitor_app.log
@@ -31,16 +29,12 @@ Configutation:
 
 
   Loggers:
-
     Root:
       level: info
       AppenderRef:
         - ref: Console_Appender
         - ref: RollingFile_Appender
-
-
     Logger:
-
       - name: com.file.monitoring
         additivity: false
         level: ${log-level}
@@ -54,53 +48,3 @@ Configutation:
 #        AppenderRef:
 #          - ref: Console_Appender
 #          - ref: RollingFile_Appender
-
-
-
-
-
-
-
-
-
-
-
-#property:
-#  logsPath: ${sys:file.monitoring.app.logs.path:-/file-monitor/logs}
-#  dateDir: $${date:yyyy-MM-dd}
-#
-#appender:
-#  console:
-#    type: Console
-#    name: STOUT
-#    layout:
-#      type: PatternLayout
-#      pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c %L - %msg%n'
-#
-#
-#  logToFile:
-#    type: RollingFile
-#    name: logToFile
-#    fileName: ${logsPath}/${dateDir}/app.log
-#    filePattern: ${logsPath}/${dateDir}/app-%d{yyyy-MM-dd}-%i.log
-#    layout:
-#      type: PatternLayout
-#      pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c %L - %msg%n'
-#    policies:
-#      type: Policies
-#      size:
-#        type: SizeBasedTriggeringPolicy
-#        size: 1MB
-#    strategy:
-#      type: DefaultRolloverStrategy
-#      max: 7
-#
-#
-#rootLogger:
-#  level: ${sys:file.monitoring.app.log.level:-DEBUG}
-#  appenderRef:
-#    console:
-#      ref: STDOUT
-#    rolling:
-#      ref: logToFile
-#

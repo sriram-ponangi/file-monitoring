@@ -13,7 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication(scanBasePackages = {"com.file.monitoring"})
 public class FileMonitoringApp implements CommandLineRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileMonitoringApp.class);
@@ -23,6 +22,7 @@ public class FileMonitoringApp implements CommandLineRunner {
     private Catalog chainYMLCatalog;
 
     public static void main(String[] args) throws Exception {
+
         SpringApplication.run(FileMonitoringApp.class, args);
     }
 
@@ -40,6 +40,7 @@ public class FileMonitoringApp implements CommandLineRunner {
             Command ascendingChain1 = chainYMLCatalog.getCommand(ChainNames.ASCENDING_CHAIN.getChainName());
             ascendingChain1.execute(ascendingChainContext1);
 
+            LOGGER.info("======================================================================================================\n\n");
             LOGGER.info("======================================================================================================\n\n");
 
             Context descendingChainContext1 = new ContextBase();
