@@ -1,7 +1,8 @@
-package com.file.monitoring.application.io.config;
+package com.file.monitoring.application.events.config;
 
-import com.file.monitoring.application.io.config.beans.EventConfig;
-import com.file.monitoring.application.io.config.beans.MonitoringConfigsBean;
+import com.file.monitoring.application.events.config.beans.EventConfig;
+import com.file.monitoring.application.events.config.beans.MonitoringConfigsBean;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +26,9 @@ public class MonitoringEventConfiguration {
 
 
     @Bean("MonitoringConfigs")
-    public MonitoringConfigsBean registerActiveMonitoringEvents() {
+    public MonitoringConfigsBean registerActiveMonitoringEvents() throws Exception {
         Yaml yaml = new Yaml(new Constructor(MonitoringConfigsBean.class));
-        InputStream inputStream = this.getClass()
-                .getClassLoader()
-                .getResourceAsStream(monitoringConfigYMLPath);
+        InputStream inputStream = getValidMonitoringConfigs();
         MonitoringConfigsBean monitoringConfigsBean = yaml.load(inputStream);
 
         return monitoringConfigsBean;
@@ -43,6 +45,16 @@ public class MonitoringEventConfiguration {
         });
 
         return map;
+    }
+
+    private InputStream getValidMonitoringConfigs() throws Exception {
+        File yamlFile = FileUtils.getFile(monitoringConfigYMLPath);
+        if (yamlFile.isFile()) {
+            return new FileInputStream(yamlFile);
+        }
+        return this.getClass()
+                .getClassLoader()
+                .getResourceAsStream(monitoringConfigYMLPath);
     }
 
 }

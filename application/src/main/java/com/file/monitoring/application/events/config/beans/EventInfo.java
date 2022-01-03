@@ -1,6 +1,6 @@
-package com.file.monitoring.application.io.config.beans;
+package com.file.monitoring.application.events.config.beans;
 
-import com.file.monitoring.application.io.constants.MonitoringEventType;
+import com.file.monitoring.application.events.constants.MonitoringEventType;
 import lombok.Data;
 
 @Data

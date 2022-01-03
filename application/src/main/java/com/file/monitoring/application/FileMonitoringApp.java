@@ -1,8 +1,6 @@
 package com.file.monitoring.application;
 
-import com.file.monitoring.application.io.MonitoringEventsLoader;
-import com.file.monitoring.application.io.config.beans.MonitoringConfigsBean;
-import org.apache.commons.chain.Catalog;
+import com.file.monitoring.application.events.MonitoringEventsLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

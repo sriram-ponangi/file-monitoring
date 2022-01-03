@@ -1,4 +1,4 @@
-package com.file.monitoring.application.io.constants;
+package com.file.monitoring.application.events.constants;
 
 
 public enum MonitoringEventType {

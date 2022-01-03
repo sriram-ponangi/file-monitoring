@@ -1,4 +1,4 @@
-package com.file.monitoring.application.io.config.beans;
+package com.file.monitoring.application.events.config.beans;
 
 import lombok.Data;
 import java.util.List;

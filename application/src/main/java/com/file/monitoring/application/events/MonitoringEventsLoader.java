@@ -1,8 +1,8 @@
-package com.file.monitoring.application.io;
+package com.file.monitoring.application.events;
 
-import com.file.monitoring.application.io.config.beans.EventConfig;
-import com.file.monitoring.application.io.config.beans.MonitoringConfigsBean;
-import com.file.monitoring.application.io.listeners.MonitoringEventListener;
+import com.file.monitoring.application.events.config.beans.EventConfig;
+import com.file.monitoring.application.events.config.beans.MonitoringConfigsBean;
+import com.file.monitoring.application.events.listeners.MonitoringEventListener;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
