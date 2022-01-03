@@ -33,7 +33,7 @@ public class MonitoringEventsLoader {
 
                     FileAlterationObserver observer = new FileAlterationObserver(eventConfig.getPath());
                     // TODO: Take poll interval in YAML
-                    FileAlterationMonitor monitor = new FileAlterationMonitor(5000);
+                    FileAlterationMonitor monitor = new FileAlterationMonitor(eventConfig.getPollInterval());
                     FileAlterationListener fal = new FileAlterationListenerAdaptor();
                     // TODO NOTE: - 1 (SEE BELOW COMMENT FOR MORE DETAILS)
 

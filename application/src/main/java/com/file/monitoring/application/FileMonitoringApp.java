@@ -15,14 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FileMonitoringApp implements CommandLineRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileMonitoringApp.class);
 
-//    @Autowired
-//    @Qualifier("ChainCatalog")
-//    private Catalog chainCatalog;
-//
-//    @Autowired
-//    @Qualifier("MonitoringConfigs")
-//    private MonitoringConfigsBean monitoringConfigs;
-
     @Autowired
     @Qualifier("MonitoringEventsLoader")
     private MonitoringEventsLoader monitoringEventsLoader;
@@ -38,35 +30,7 @@ public class FileMonitoringApp implements CommandLineRunner {
         try {
             monitoringEventsLoader.loadMonitoringEvents();
             LOGGER.info("Registered Event Monitors = {} ", MonitoringEventsLoader.REGISTERED_EVENT_MONITORS);
-//
-//            LOGGER.info("chainYMLCatalog = {} ", chainCatalog);
-//            LOGGER.info("monitoringConfigs = {} ", monitoringConfigs);
 
-
-/*
-            LOGGER.info("======================================================================================================");
-            LOGGER.info("EXECUTING CHAIN YAML CATALOG: ");
-            LOGGER.info("======================================================================================================\n\n");
-
-
-            Context ascendingChainContext1 = new ContextBase();
-            Command ascendingChain1 = chainYMLCatalog.getCommand(ChainNames.ASCENDING_CHAIN.getChainName());
-            ascendingChain1.execute(ascendingChainContext1);
-
-            LOGGER.info("======================================================================================================\n\n");
-            LOGGER.info("======================================================================================================\n\n");
-
-            Context descendingChainContext1 = new ContextBase();
-            Command descendingChain1 = chainYMLCatalog.getCommand(ChainNames.DESCENDING_CHAIN.getChainName());
-            descendingChain1.execute(descendingChainContext1);
-
-            LOGGER.info("======================================================================================================\n\n");
-            LOGGER.info("======================================================================================================\n\n");
-
-            Context verificationChainContext1 = new ContextBase();
-            Command verificationChain = chainYMLCatalog.getCommand(ChainNames.VERIFICATION_CHAIN.getChainName());
-            verificationChain.execute(verificationChainContext1);
-*/
         } catch (Exception e) {
             LOGGER.error("{} ", e);
         }

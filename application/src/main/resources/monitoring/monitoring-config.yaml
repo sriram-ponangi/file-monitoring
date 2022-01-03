@@ -1,23 +1,50 @@
 monitoringEvents:
-- path: C:\Users\lenovo\Desktop
-  name: eventOne
-  active: true
-  eventsInfo:
-  - type: FILE_CREATE
+  - path: C:\Users\lenovo\Desktop
+    pollInterval: 1000
+    name: eventOne
     active: true
-    chainInfo:
-      name: ASCENDING_CHAIN
-      contextParams:
-      - key: ONE
-        value: OneVal
-      - key: TWO
-        value: TwoVal
-  - type: FILE_CHANGE
+    eventsInfo:
+      - type: FILE_CREATE
+        active: true
+        chainInfo:
+          name: ASCENDING_CHAIN
+          contextParams:
+            - key: ONE
+              value: OneVal
+            - key: TWO
+              value: TwoVal
+      - type: FILE_CHANGE
+        active: true
+        chainInfo:
+          name: VERIFICATION_CHAIN
+          contextParams:
+            - key: THREE
+              value: ThreeVal
+            - key: FOUR
+              value: FourVal
+
+
+
+  - path: C:\Users\lenovo\Documents
+    pollInterval: 1000
+    name: secondEvent
     active: true
-    chainInfo:
-      name: VERIFICATION_CHAIN
-      contextParams:
-      - key: THREE
-        value: ThreeVal
-      - key: FOUR
-        value: FourVal
+    eventsInfo:
+      - type: FILE_CREATE
+        active: true
+        chainInfo:
+          name: ASCENDING_CHAIN
+          contextParams:
+            - key: A1
+              value: AA
+            - key: B2
+              value: BB
+      - type: FILE_DELETE
+        active: true
+        chainInfo:
+          name: VERIFICATION_CHAIN
+          contextParams:
+            - key: C3
+              value: CC
+            - key: D4
+              value: DD
