@@ -19,20 +19,20 @@ import org.yaml.snakeyaml.constructor.Constructor;
 import java.io.InputStream;
 
 @Component
-public class ChainYAMLCatalog {
+public class ChainYAMLCatalogConfiguration {
 
     @Autowired
     private BeanFactory beanFactory;
 
     @Value("${chain.config.yml.path}")
-    String chainConfigXMLPath;
+    String chainConfigYMLPath;
 
-    @Bean("ChainYMLCatalog")
+    @Bean("ChainCatalog")
     private Catalog parseConfigFile() {
         Yaml yaml = new Yaml(new Constructor(CatalogBean.class));
         InputStream inputStream = this.getClass()
                 .getClassLoader()
-                .getResourceAsStream(chainConfigXMLPath);
+                .getResourceAsStream(chainConfigYMLPath);
         CatalogBean catalogBean = yaml.load(inputStream);
 
 

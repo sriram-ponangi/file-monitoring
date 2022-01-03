@@ -1,5 +1,5 @@
 catalog:
-  - chain: AscendingChain
+  - chain: ASCENDING_CHAIN
     commands:
     - GenericCommand1
     - GenericCommand2
@@ -7,7 +7,7 @@ catalog:
     - GenericCommand4
     - GenericCommand5
 
-  - chain: DescendingChain
+  - chain: DESCENDING_CHAIN
     commands:
     - GenericCommand5
     - GenericCommand4
@@ -15,7 +15,7 @@ catalog:
     - GenericCommand2
     - GenericCommand1
     -
-  - chain: VerificationChain
+  - chain: VERIFICATION_CHAIN
     commands:
     - BasicVerificationCommand
     - GenericCommand1

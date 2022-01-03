@@ -6,6 +6,11 @@ chain:
     yml:
       path: chain/chain-config.yml
 
+monitoring-events:
+  config:
+    yml:
+      path: monitoring/monitoring-config.yaml
+
 temp-db1-admin:
   datasource:
     jdbc-url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_1

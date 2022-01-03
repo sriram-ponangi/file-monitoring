@@ -1,19 +1,12 @@
 package com.file.monitoring.catalog.constants;
 
 public enum ChainNames {
-    ASCENDING_CHAIN("AscendingChain"),
-    DESCENDING_CHAIN("DescendingChain"),
-    VERIFICATION_CHAIN("VerificationChain"),
+    ASCENDING_CHAIN,
+    DESCENDING_CHAIN,
+    VERIFICATION_CHAIN,
 
     ;
 
-    private String chainName;
 
-    ChainNames(String chainName) {
-        this.chainName = chainName;
-    }
 
-    public String getChainName() {
-        return chainName;
-    }
 }

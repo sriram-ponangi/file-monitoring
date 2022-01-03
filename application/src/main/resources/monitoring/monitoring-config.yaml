@@ -1,0 +1,23 @@
+monitoringEvents:
+- path: C:\Users\lenovo\Desktop
+  name: eventOne
+  active: true
+  eventsInfo:
+  - type: FILE_CREATE
+    active: true
+    chainInfo:
+      name: ASCENDING_CHAIN
+      contextParams:
+      - key: ONE
+        value: OneVal
+      - key: TWO
+        value: TwoVal
+  - type: FILE_CHANGE
+    active: true
+    chainInfo:
+      name: VERIFICATION_CHAIN
+      contextParams:
+      - key: THREE
+        value: ThreeVal
+      - key: FOUR
+        value: FourVal

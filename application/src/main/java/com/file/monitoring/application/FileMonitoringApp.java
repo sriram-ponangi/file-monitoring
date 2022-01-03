@@ -1,10 +1,8 @@
 package com.file.monitoring.application;
 
-import com.file.monitoring.catalog.constants.ChainNames;
+import com.file.monitoring.application.io.MonitoringEventsLoader;
+import com.file.monitoring.application.io.config.beans.MonitoringConfigsBean;
 import org.apache.commons.chain.Catalog;
-import org.apache.commons.chain.Command;
-import org.apache.commons.chain.Context;
-import org.apache.commons.chain.impl.ContextBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +15,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FileMonitoringApp implements CommandLineRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileMonitoringApp.class);
 
+//    @Autowired
+//    @Qualifier("ChainCatalog")
+//    private Catalog chainCatalog;
+//
+//    @Autowired
+//    @Qualifier("MonitoringConfigs")
+//    private MonitoringConfigsBean monitoringConfigs;
+
     @Autowired
-    @Qualifier("ChainYMLCatalog")
-    private Catalog chainYMLCatalog;
+    @Qualifier("MonitoringEventsLoader")
+    private MonitoringEventsLoader monitoringEventsLoader;
 
     public static void main(String[] args) throws Exception {
 
@@ -30,7 +36,14 @@ public class FileMonitoringApp implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try {
+            monitoringEventsLoader.loadMonitoringEvents();
+            LOGGER.info("Registered Event Monitors = {} ", MonitoringEventsLoader.REGISTERED_EVENT_MONITORS);
+//
+//            LOGGER.info("chainYMLCatalog = {} ", chainCatalog);
+//            LOGGER.info("monitoringConfigs = {} ", monitoringConfigs);
 
+
+/*
             LOGGER.info("======================================================================================================");
             LOGGER.info("EXECUTING CHAIN YAML CATALOG: ");
             LOGGER.info("======================================================================================================\n\n");
@@ -53,7 +66,7 @@ public class FileMonitoringApp implements CommandLineRunner {
             Context verificationChainContext1 = new ContextBase();
             Command verificationChain = chainYMLCatalog.getCommand(ChainNames.VERIFICATION_CHAIN.getChainName());
             verificationChain.execute(verificationChainContext1);
-
+*/
         } catch (Exception e) {
             LOGGER.error("{} ", e);
         }
