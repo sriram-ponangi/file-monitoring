@@ -1,9 +1,9 @@
 package com.file.monitoring.common.configs.commands.processors;
 
-import org.apache.commons.chain.Context;
+import java.util.HashMap;
 
 public interface CommonFileMonitoringProcessor {
 
-    void process(Context context) throws Exception;
+    void process(HashMap<String, Object> context) throws Exception;
 
 }

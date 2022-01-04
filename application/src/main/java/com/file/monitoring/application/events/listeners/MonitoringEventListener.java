@@ -4,10 +4,8 @@ import com.file.monitoring.application.events.config.beans.EventConfig;
 import com.file.monitoring.application.events.config.beans.EventInfo;
 import com.file.monitoring.application.events.constants.MonitoringEventType;
 import com.file.monitoring.catalog.constants.ChainNames;
-import org.apache.commons.chain.Catalog;
-import org.apache.commons.chain.Command;
-import org.apache.commons.chain.Context;
-import org.apache.commons.chain.impl.ContextBase;
+import com.file.monitoring.common.configs.Catalog;
+import com.file.monitoring.common.configs.Chain;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,15 +37,14 @@ public class MonitoringEventListener extends FileAlterationListenerAdaptor {
             return;
         }
 
-        Context chainContext = new ContextBase();
+        HashMap<String, Object> chainContext = new HashMap<>();
         eventInfo.getChainInfo().getContextParams().forEach(param -> {
             chainContext.put(param.getKey(), param.getValue());
         });
 
-
-        Command commandsChain = chainCatalog.getCommand(eventInfo.getChainInfo().getName());
         try {
-            commandsChain.execute(chainContext);
+            Chain chain = chainCatalog.getChain(eventInfo.getChainInfo().getName());
+            chain.execute(chainContext);
         } catch (Exception e) {
             e.printStackTrace();
         }

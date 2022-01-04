@@ -1,8 +1,9 @@
 package com.file.monitoring.generic.commands;
 
 import com.file.monitoring.generic.commands.processors.factory.GenericProcessorsFactory;
-import org.apache.commons.chain.Context;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
 
 @Component("GenericCommand4")
 public class GenericCommand4 extends GenericCommand {
@@ -12,7 +13,7 @@ public class GenericCommand4 extends GenericCommand {
     }
 
     @Override
-    public void executeCommand(Context context) throws Exception {
+    public void executeCommand(HashMap<String, Object> context) throws Exception {
         this.genericProcessorsFactory.createGenericProcessor4_1().process(context);
     }
 

@@ -52,6 +52,7 @@ public class MonitoringEventConfiguration {
         if (yamlFile.isFile()) {
             return new FileInputStream(yamlFile);
         }
+
         return this.getClass()
                 .getClassLoader()
                 .getResourceAsStream(monitoringConfigYMLPath);

@@ -18,11 +18,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-chain</groupId>
-            <artifactId>commons-chain</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.file.monitoring</groupId>
             <artifactId>common-configs</artifactId>
         </dependency>

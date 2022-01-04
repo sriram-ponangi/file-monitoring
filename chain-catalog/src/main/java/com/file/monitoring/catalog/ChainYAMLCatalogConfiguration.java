@@ -2,11 +2,10 @@ package com.file.monitoring.catalog;
 
 import com.file.monitoring.catalog.beans.CatalogBean;
 import com.file.monitoring.catalog.beans.ChainConfig;
-import org.apache.commons.chain.Catalog;
 
-import org.apache.commons.chain.Command;
-import org.apache.commons.chain.impl.CatalogBase;
-import org.apache.commons.chain.impl.ChainBase;
+import com.file.monitoring.common.configs.Catalog;
+import com.file.monitoring.common.configs.Chain;
+import com.file.monitoring.common.configs.Command;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,8 @@ import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 
 @Component
@@ -28,30 +29,38 @@ public class ChainYAMLCatalogConfiguration {
     String chainConfigYMLPath;
 
     @Bean("ChainCatalog")
-    private Catalog parseConfigFile() {
+    private Catalog parseConfigFile() throws Exception {
         Yaml yaml = new Yaml(new Constructor(CatalogBean.class));
-        InputStream inputStream = this.getClass()
-                .getClassLoader()
-                .getResourceAsStream(chainConfigYMLPath);
-        CatalogBean catalogBean = yaml.load(inputStream);
+        CatalogBean catalogBean = yaml.load(getValidChainConfigs());
 
-
-        CatalogBase catalogBase = new CatalogBase();
+        Catalog catalog = new Catalog();
 
         for (ChainConfig cc : catalogBean.getCatalog()) {
-            ChainBase chainBase = new ChainBase();
+            if (StringUtils.isBlank(cc.getChain())) {
+                break;
+            }
+            Chain chain = new Chain(cc.getChain());
+            catalog.addChain(chain);
 
             for (String commandName : cc.getCommands()) {
-                if(StringUtils.isNotBlank(commandName)) {
-                    chainBase.addCommand(beanFactory.getBean(commandName, Command.class));
+                if (StringUtils.isNotBlank(commandName)) {
+                    chain.addCommand(beanFactory.getBean(commandName, Command.class));
                 }
             }
-            if(StringUtils.isNotBlank(cc.getChain())) {
-                catalogBase.addCommand(cc.getChain(), chainBase);
-            }
+
         }
 
-        return catalogBase;
+        return catalog;
+    }
+
+    private InputStream getValidChainConfigs() throws Exception {
+        File yamlFile = new File(chainConfigYMLPath);
+        if (yamlFile.isFile() && yamlFile.canRead()) {
+            return new FileInputStream(yamlFile);
+        }
+        return this.getClass()
+                .getClassLoader()
+                .getResourceAsStream(chainConfigYMLPath);
     }
 }
 

@@ -18,9 +18,9 @@
     <modules>
         <module>generic-commands</module>
         <module>verification-commands</module>
-        <module>application</module>
         <module>common-configs</module>
         <module>chain-catalog</module>
+        <module>application</module>
     </modules>
 
     <properties>
@@ -106,12 +106,6 @@
                 <groupId>com.file.monitoring</groupId>
                 <artifactId>chain-catalog</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>commons-chain</groupId>
-                <artifactId>commons-chain</artifactId>
-                <version>1.2</version>
             </dependency>
 
             <dependency>

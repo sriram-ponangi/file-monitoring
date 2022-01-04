@@ -1,11 +1,10 @@
 package com.file.monitoring.common.configs.commands.validators;
 
-import org.apache.commons.chain.Context;
-
+import java.util.HashMap;
 import java.util.List;
 
 public interface CommonFileMonitoringValidators {
 
-    List<String> validate(Context context) throws Exception;
+    List<String> validate(HashMap<String, Object> context) throws Exception;
 
 }
