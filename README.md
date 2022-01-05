@@ -16,7 +16,8 @@ through VM args or application properties.
 - The chain-of-responsibility design pattern.
 - Apache commons-io to capture the file monitoring events.
 - Log4j2 to efficiently manage the rolling of log files.
-- Creating multiple database connection that can be used with spring boot.
+- Creating multiple database connection that can be used with spring boot and hikaricp.
+  - Jaspyt for encrypting database passwords.
     ```shell
     # Command To Start The Temporary DB In a Docker Container:
     #---------------------------------------------------------
