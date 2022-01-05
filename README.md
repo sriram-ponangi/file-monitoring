@@ -39,6 +39,8 @@ through VM args or application properties.
    `-Dfile.monitoring.app.logs.level=info`
 
 - The command to run the application with all the optional VM args:
-`java -jar -Dchain.config.yml.path=/c/Users/lenovo/Desktop/chain-config.yaml -Dmonitoring-events.config.yml.path=/c/Users/lenovo/Desktop/monitoring-config.yaml -Dfile.monitoring.app.logs.path=/c/Users/lenovo/Desktop/logs -Dfile.monitoring.app.logs.level=info file-monitoring-0.0.1-SNAPSHOT.jar`
+  ```bash
+  java -jar -Dchain.config.yml.path=/c/Users/lenovo/Desktop/chain-config.yaml -Dmonitoring-events.config.yml.path=/c/Users/lenovo/Desktop/monitoring-config.yaml -Dfile.monitoring.app.logs.path=/c/Users/lenovo/Desktop/logs -Dfile.monitoring.app.logs.level=info file-monitoring-0.0.1-SNAPSHOT.jar
+  ```
 
 
