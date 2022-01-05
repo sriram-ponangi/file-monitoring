@@ -11,15 +11,23 @@ monitoring-events:
     yml:
       path: monitoring/monitoring-config.yaml
 
+# https://www.devglan.com/online-tools/jasypt-online-encryption-decryption
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: TempSecret
+
+
 temp-db1-admin:
   datasource:
     jdbc-url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_1
     username: TEMP_DB_1_ADMIN
-    password: TEMP_DB_1_ADMIN
+    password: ENC(vkSK81vq6i+aK5V+9LNI9fmPAns5P0Wn)
 
 
 temp-db2-admin:
   datasource:
     jdbc-url: jdbc:mysql://127.0.0.1:33060/TEMP_DB_2
     username: TEMP_DB_2_ADMIN
-    password: TEMP_DB_2_ADMIN
+    password: ENC(uRPZWkQKRdJHqfltlY/KhZMQ/fEhWb9d)

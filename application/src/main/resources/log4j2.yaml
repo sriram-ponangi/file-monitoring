@@ -48,3 +48,10 @@ Configutation:
 #        AppenderRef:
 #          - ref: Console_Appender
 #          - ref: RollingFile_Appender
+
+      - name: com.ulisesbocchio
+        additivity: false
+        level: error
+        AppenderRef:
+          - ref: Console_Appender
+          - ref: RollingFile_Appender

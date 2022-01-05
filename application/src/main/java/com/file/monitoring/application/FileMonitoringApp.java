@@ -1,6 +1,7 @@
 package com.file.monitoring.application;
 
 import com.file.monitoring.application.events.MonitoringEventsLoader;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {"com.file.monitoring"})
+@EnableEncryptableProperties
 public class FileMonitoringApp implements CommandLineRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileMonitoringApp.class);
 
