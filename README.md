@@ -13,8 +13,8 @@ through VM args or application properties.
 - Spring Boot CommandLineRunner as this is a console application.
 - Maven Multi-Modules to split the code properly to ensure high cohesion.
 - Abstract Factory and Dependency Injection patterns to ensure low coupling.
-- Apache commons-chain library to implement the chain-of-responsibility pattern in a more standardized manner.
-- Apache commons-io to capture the  file monitoring events.
+- The chain-of-responsibility design pattern.
+- Apache commons-io to capture the file monitoring events.
 - Log4j2 to efficiently manage the rolling of log files.
 - Creating multiple database connection that can be used with spring boot.
     ```shell
