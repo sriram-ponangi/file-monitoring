@@ -26,3 +26,19 @@ through VM args or application properties.
     #docker pull ibmcom/db2
     docker run -itd --name db2-locl --privileged=true -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=default -e DBNAME=testdb -v $HOME/db2/data:/database ibmcom/db2
     ```
+    
+    
+# Deployment Instructions:
+
+- Run the application using the command: `java -jar file-monitoring-0.0.1-SNAPSHOT.jar`
+
+- You can also provide the following optional VM-Args to the above command:
+   ` -Dmonitoring-events.config.yml.path=/c/Users/lenovo/Desktop/monitoring-config.yaml`
+   `-Dchain.config.yml.path=/c/Users/lenovo/Desktop/chain-config.yaml`
+   `-Dfile.monitoring.app.logs.path=/c/Users/lenovo/Desktop/logs`
+   `-Dfile.monitoring.app.logs.level=info`
+
+- The command to run the application with all the optional VM args:
+`java -jar -Dchain.config.yml.path=/c/Users/lenovo/Desktop/chain-config.yaml -Dmonitoring-events.config.yml.path=/c/Users/lenovo/Desktop/monitoring-config.yaml -Dfile.monitoring.app.logs.path=/c/Users/lenovo/Desktop/logs -Dfile.monitoring.app.logs.level=info file-monitoring-0.0.1-SNAPSHOT.jar`
+
+
