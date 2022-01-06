@@ -29,7 +29,7 @@ public class FileMonitoringApp implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         try {
             monitoringEventsLoader.loadMonitoringEvents();
             LOGGER.info("Registered Event Monitors = {} ", MonitoringEventsLoader.REGISTERED_EVENT_MONITORS);
